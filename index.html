@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+ 
+<p>Lisa sõnu, et teada saada tähtede arv sõnas</p>
+<p>Lisatud sõnad tähestiku järjekorras</p>
+ 
+<div ng-app="myApp" ng-controller="namesCtrl">
+ 
+<table border="1" width="100%">
+
+<tr>
+<th>Sõna</th>
+<th>Pikkus</th>
+</tr>
+<tr ng-repeat="sona in sonad | orderBy:sona">
+<td>{{sona}}</td>
+<td>{{sona.length}}</td>
+</tr>
+</table>
+<input type="text" ng-model="uussona" />
+	  <button ng-click="lisa()">Lisa sõna</button>
+ 
+</div>
+ 
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.sonad = [     
+        
+        ];
+		$scope.lisa=function(){
+		   $scope.sonad.push($scope.uussona);
+		}
+    
+	
+});
+</script>
+ 
+</body>
+</html>
